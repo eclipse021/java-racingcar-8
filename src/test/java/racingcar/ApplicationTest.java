@@ -31,6 +31,68 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void 자동차_이름이_비어있는경우_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("", "3"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 자동차_글자수가_5를_초과한경우_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("abcdef", "2"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 시도할횟수에_숫자가_아닌_문자가_들어간_경우_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,woni", "a"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+
+
+    @Test
+    void 동일한_이름이_들어온경우_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,pobi", "2"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 시도할횟수가_0인경우_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,woni", "0"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining("1회 이상")
+        );
+    }
+
+    @Test
+    void 시도할횟수가_음수인경우_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,woni", "-1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining("1회 이상")
+        );
+    }
+
+    @Test
+    void 자동차_이름이_공백만_있는경우_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("   ,pobi", "2"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining("비어 있을 수 없습니다")
+        );
+    }
+
+
     @Override
     public void runMain() {
         Application.main(new String[]{});

@@ -26,7 +26,7 @@ public class RacingCarController {
 
     /** 전체 레이스 실행 */
     public void run() {
-        try {
+
             // 사용자 입력
             List<String> names = inputView.readCarNames();
             int attemptCount = inputView.readAttemptCount();
@@ -43,9 +43,7 @@ public class RacingCarController {
             // 종료 처리
             racingCarService.finishRace();
 
-        } catch (IllegalArgumentException e) {
-            System.out.println("[ERROR] " + e.getMessage());
-        }
+
     }
 }
 
