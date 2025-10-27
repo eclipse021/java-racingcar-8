@@ -23,6 +23,15 @@ public class Car {
         }
     }
 
+    public void moveForward(int randomValue) {
+        if (randomValue < 0 || randomValue > 9) {
+            throw new IllegalArgumentException("랜덤값은 0~9 사이여야 합니다.");
+        }
+        if (randomValue >= MIN_REQUIREMENTS) {
+            carStatus.moveForward();
+        }
+    }
+
     public String getName() {
         return this.name;
     }
