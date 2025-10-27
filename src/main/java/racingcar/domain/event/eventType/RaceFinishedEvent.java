@@ -4,10 +4,10 @@ import java.util.List;
 
 public class RaceFinishedEvent {
 
-    private final List<String> winners;
+    private final List<String> cars;
 
-    public RaceFinishedEvent(List<String> winners) {
-        this.winners = winners;
+    public RaceFinishedEvent(List<String> cars) {
+        this.cars = cars;
     }
 
 }
