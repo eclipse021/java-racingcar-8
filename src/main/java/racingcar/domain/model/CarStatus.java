@@ -15,4 +15,14 @@ public class CarStatus {
         this.expression += "-";
     }
 
+    public boolean verify(){
+
+        if(this.movingCnt == expression.length()){
+            return true;
+        }else{
+            return false;
+        }
+
+    }
+
 }
