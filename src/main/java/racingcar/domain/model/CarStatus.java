@@ -29,4 +29,8 @@ public class CarStatus {
         return movingCnt;
     }
 
+    public String getExpression(){
+        return expression;
+    }
+
 }
