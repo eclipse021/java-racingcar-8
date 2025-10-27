@@ -1,6 +1,10 @@
 package racingcar.domain.event.publisher;
 
+import racingcar.domain.event.eventType.RaceFinishedEvent;
+import racingcar.domain.event.eventType.TurnFinishedEvent;
 import racingcar.domain.event.subscriber.EventSubscriber;
+import racingcar.domain.event.subscriber.RaceFinishedSubscriber;
+import racingcar.domain.event.subscriber.TurnFinishedSubscriber;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +22,17 @@ public class EventPublisher {
     /** 이벤트 발행 */
     public static void publish(Object event) {
         for (EventSubscriber subscriber : subscribers) {
-            subscriber.onEvent(event); // 각 구독자의 onEvent 호출
+
+            if(event instanceof TurnFinishedEvent){
+                TurnFinishedSubscriber turnFinishedSubscriber = (TurnFinishedSubscriber) subscriber;
+                turnFinishedSubscriber.onEvent(event);
+            }
+
+            if(event instanceof RaceFinishedEvent){
+                RaceFinishedSubscriber raceFinishedSubscriber = (RaceFinishedSubscriber) subscriber;
+                raceFinishedSubscriber.onEvent(event);
+            }
+
         }
     }
 
