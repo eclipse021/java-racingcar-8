@@ -43,5 +43,7 @@ public class TurnFinishedAction {
 
         // 출력
         TurnFinishedOutputView.printTurnFinishedOutput(repository.getCars());
+        System.out.println();
+
     }
 }
