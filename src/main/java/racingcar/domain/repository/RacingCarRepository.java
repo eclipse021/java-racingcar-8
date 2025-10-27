@@ -14,6 +14,7 @@ public class RacingCarRepository {
 
     /**
      * 자동차를 저장소에 추가
+     *  @param name : 자동차 이름
      */
     public void addCar(String name) {
 
@@ -34,7 +35,20 @@ public class RacingCarRepository {
     }
 
 
-
+    /**
+     * RandomFunc 에서 실행한 랜덤 결과(Map<String,Integer>)를 받아 이동시킨다.
+     *
+     * @param randomMap key: 자동차 이름, value: 랜덤값(0~9)
+     */
+    public void moveAll(Map<String, Integer> randomMap) {
+        for (Map.Entry<String, Integer> entry : randomMap.entrySet()) {
+            Car car = cars.get(entry.getKey());
+            if (car != null) {
+                car.moveForward(entry.getValue());
+            }
+        }
+    }
+    
 
 
 
