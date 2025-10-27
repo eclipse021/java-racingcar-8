@@ -23,16 +23,15 @@ public class EventPublisher {
     public static void publish(Object event) {
         for (EventSubscriber subscriber : subscribers) {
 
-            if(event instanceof TurnFinishedEvent){
-                TurnFinishedSubscriber turnFinishedSubscriber = (TurnFinishedSubscriber) subscriber;
-                turnFinishedSubscriber.onEvent(event);
+            // TurnFinishedEvent → TurnFinishedSubscriber에게만 전달
+            if (event instanceof TurnFinishedEvent && subscriber instanceof TurnFinishedSubscriber) {
+                ((TurnFinishedSubscriber) subscriber).onEvent(event);
             }
 
-            if(event instanceof RaceFinishedEvent){
-                RaceFinishedSubscriber raceFinishedSubscriber = (RaceFinishedSubscriber) subscriber;
-                raceFinishedSubscriber.onEvent(event);
+            // RaceFinishedEvent → RaceFinishedSubscriber에게만 전달
+            if (event instanceof RaceFinishedEvent && subscriber instanceof RaceFinishedSubscriber) {
+                ((RaceFinishedSubscriber) subscriber).onEvent(event);
             }
-
         }
     }
 
