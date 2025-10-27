@@ -48,7 +48,18 @@ public class RacingCarRepository {
             }
         }
     }
-    
+
+    /**
+     * CarStatus의 movingCnt와 expression.length() 일치하는지 일관성을 검증한다
+     * 만약, 둘이 일치하지 않으면 동기화 관련 문제가 발생했다고 판단해 예외 발생
+     */
+    public void verifyConsistencyByCars(List<Car> cars) {
+        for (Car car : cars) {
+            if(!car.getCarStatus().verifyConsistency()){
+                throw new IllegalArgumentException("동기화 문제가 발생했습니다");
+            }
+        }
+    }
 
 
 
