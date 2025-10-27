@@ -49,8 +49,10 @@ public class InputView {
         return count;
     }
 
-    // 내부 검증 로직
-    private void validateNames(List<String> names) {
+    /**
+     * 자동차 이름의 유효성 검사를 실행한다.
+     */
+    private static void validateNames(List<String> names) {
         // 이름 길이 검사
         boolean invalid = names.stream().anyMatch(name -> name.length() > 5 || name.isEmpty());
         if (invalid) {
@@ -58,7 +60,10 @@ public class InputView {
         }
     }
 
-    private int validateAttemptCount(String input){
+    /**
+     * 시도 횟수의 유효성 검사를 실행하다.
+     */
+    private static int validateAttemptCount(String input){
         try {
             int count = Integer.parseInt(input);
             if (count <= 0) {
