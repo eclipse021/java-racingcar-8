@@ -1,14 +1,18 @@
 package racingcar.domain.event.action;
 
 import racingcar.domain.event.eventType.RaceFinishedEvent;
+import racingcar.view.outputView.RaceFinishedOutputView;
 
 public class RaceFinishedAction {
 
-    //TODO 추후 outputView 생성 시 해당 기능 구현
-    //private final OutputView outputView;
+    private final RaceFinishedEvent raceFinishedEvent;
 
-    public void action(RaceFinishedEvent raceFinishedEvent) {
-        // outputView.printFinalWinners();
+    public RaceFinishedAction(RaceFinishedEvent raceFinishedEvent ) {
+        this.raceFinishedEvent = raceFinishedEvent;
+    }
+
+    public void action() {
+       RaceFinishedOutputView.printRacingFinishedOutput(raceFinishedEvent.getCars());
     }
 
 }

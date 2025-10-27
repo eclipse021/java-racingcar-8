@@ -10,7 +10,7 @@ public class RaceFinishedSubscriber implements EventSubscriber {
     public void onEvent(Object object) {
 
         RaceFinishedEvent raceFinishedEvent = (RaceFinishedEvent) object;
-        RaceFinishedAction raceFinishedAction = new RaceFinishedAction();
+        RaceFinishedAction raceFinishedAction = new RaceFinishedAction(raceFinishedEvent);
 
     }
 }
