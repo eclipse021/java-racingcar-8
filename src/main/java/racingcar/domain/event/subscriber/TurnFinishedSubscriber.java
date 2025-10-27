@@ -1,4 +1,4 @@
 package racingcar.domain.event.subscriber;
 
-public class EventSubscriber {
+public class TurnFinishedSubscriber {
 }
