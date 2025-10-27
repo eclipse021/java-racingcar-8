@@ -15,7 +15,7 @@ public class CarStatus {
         this.expression += "-";
     }
 
-    public boolean verify(){
+    public boolean verifyConsistency(){
 
         if(this.movingCnt == expression.length()){
             return true;
