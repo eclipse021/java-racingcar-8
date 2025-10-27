@@ -2,13 +2,17 @@ package racingcar.domain.event.action;
 
 import racingcar.domain.event.eventType.RaceFinishedEvent;
 import racingcar.domain.event.eventType.TurnFinishedEvent;
+import racingcar.view.outputView.TurnFinishedOutputView;
 
 public class TurnFinishedAction {
 
-    //TODO 추후 outputView 생성 시 해당 기능 구현
-    //private final OutputView outputView;
+    private final TurnFinishedEvent turnFinishedEvent;
 
-    public void action(TurnFinishedEvent turnFinishedEvent) {
-        // outputView.printTurnFinishScreen();
+    public TurnFinishedAction(TurnFinishedEvent turnFinishedEvent) {
+        this.turnFinishedEvent = turnFinishedEvent;
+    }
+
+    public void action() {
+        TurnFinishedOutputView.printTurnFinishedOutput(turnFinishedEvent.getCarMap());
     }
 }

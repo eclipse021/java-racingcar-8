@@ -11,4 +11,7 @@ public class TurnFinishedEvent {
     public TurnFinishedEvent(Map<String, Car> carMap) {
         this.carMap = carMap;
     }
+    public Map<String, Car> getCarMap() {
+        return this.carMap;
+    }
 }

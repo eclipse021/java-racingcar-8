@@ -10,6 +10,8 @@ public class TurnFinishedSubscriber implements EventSubscriber {
     public void onEvent(Object object) {
 
         TurnFinishedEvent turnFinishedEvent = (TurnFinishedEvent) object;
-        TurnFinishedAction turnFinishedAction = new TurnFinishedAction();
+        TurnFinishedAction turnFinishedAction = new TurnFinishedAction(turnFinishedEvent);
+
+        turnFinishedAction.action();
     }
 }

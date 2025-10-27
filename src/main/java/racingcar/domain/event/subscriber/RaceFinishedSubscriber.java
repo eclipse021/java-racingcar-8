@@ -12,5 +12,7 @@ public class RaceFinishedSubscriber implements EventSubscriber {
         RaceFinishedEvent raceFinishedEvent = (RaceFinishedEvent) object;
         RaceFinishedAction raceFinishedAction = new RaceFinishedAction(raceFinishedEvent);
 
+        raceFinishedAction.action();
+
     }
 }
