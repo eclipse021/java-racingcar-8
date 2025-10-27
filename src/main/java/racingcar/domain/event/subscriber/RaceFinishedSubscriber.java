@@ -2,21 +2,25 @@ package racingcar.domain.event.subscriber;
 
 import racingcar.domain.event.action.RaceFinishedAction;
 import racingcar.domain.event.eventType.RaceFinishedEvent;
+import racingcar.domain.repository.RacingCarRepository;
 
 import java.util.concurrent.Flow;
 
 public class RaceFinishedSubscriber implements EventSubscriber {
+
+    private final RacingCarRepository repository;
+
+    public RaceFinishedSubscriber(RacingCarRepository repository) {
+        this.repository = repository;
+    }
+
     @Override
     public void onEvent(Object object) {
-
-        if(!(object instanceof RaceFinishedEvent)) {
-            throw new IllegalArgumentException("구독자가 잘못 선택되었습니다.");
+        if (!(object instanceof RaceFinishedEvent event)) {
+            throw new IllegalArgumentException("RaceFinishedSubscriber는 RaceFinishedEvent만 처리합니다.");
         }
 
-        RaceFinishedEvent raceFinishedEvent = (RaceFinishedEvent) object;
-        RaceFinishedAction raceFinishedAction = new RaceFinishedAction(raceFinishedEvent);
-
-        raceFinishedAction.action();
-
+        RaceFinishedAction action = new RaceFinishedAction(event, repository);
+        action.action();
     }
 }

@@ -12,6 +12,10 @@ public class RacingCarRepository {
     // 자동차 전체 관리 목록
     private final Map<String, Car> cars = new LinkedHashMap<>();
 
+    public Map<String, Car>getCars() {
+        return cars;
+    }
+
     /**
      * 자동차를 저장소에 추가
      *  @param name : 자동차 이름
