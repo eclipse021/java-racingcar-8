@@ -5,7 +5,7 @@ import racingcar.domain.model.Car;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class RacingFinishedOutputView {
+public class RaceFinishedOutputView {
 
     public void printRacingFinishedOutput(List<Car> cars) {
         String result = cars.stream()
