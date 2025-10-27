@@ -61,6 +61,31 @@ public class RacingCarRepository {
         }
     }
 
+    /**
+     * 가장 많이 움직이는 자동차들을 찾아 리스트로 반환한다.
+     */
+    public List<Car> findTopMovingCars(){
+        if(cars.isEmpty()) {
+            return List.of();
+        }
 
+        int max = 0;
+
+        for(Car car : cars.values()) {
+            if(car.getCarStatus().getMovingCnt() >= max) {
+                max = car.getCarStatus().getMovingCnt();
+            }
+        }
+
+        List<Car> winners = new ArrayList<>();
+
+        for(Car car : cars.values()) {
+            if(car.getCarStatus().getMovingCnt() == max) {
+                winners.add(car);
+            }
+        }
+
+        return winners;
+    }
 
 }

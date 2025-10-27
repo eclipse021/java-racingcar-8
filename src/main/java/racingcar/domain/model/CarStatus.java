@@ -25,4 +25,8 @@ public class CarStatus {
 
     }
 
+    public int getMovingCnt(){
+        return movingCnt;
+    }
+
 }
